@@ -1,15 +1,9 @@
 $(document).ready(function () {
   var array = [];
 
-
   var newdata = JSON.parse(localStorage.getItem("key"));
-  console.log(newdata, "11111111111");
+  // console.log(newdata, "11111111111");
 
-  // function updateLocalStorage(data) {
-  //   localStorage.setItem("key", JSON.stringify(data));
-  // }
-  // var Heading = $(".i4 option:selected").val();
-  // var Subheading = $(".i5 option:selected").val();
 
   if (newdata) {
 
@@ -49,7 +43,7 @@ $(document).ready(function () {
         $(".i4").change(function (e) {
           e.preventDefault();
           var Heading = $(".i4 option:selected").val();
-          console.log(Heading, '888888888888888');
+          // console.log(Heading, '888888888888888');
           $(".i5").find("option").remove();
           $(".i5").append(`<option value=''>  Select Subheading </option>`);
           $(`main section:nth-child(${Heading}) div h3`).each(function (index, value) {
@@ -70,55 +64,60 @@ $(document).ready(function () {
           if (newdata[i].subheading[j].input[k].inputvalue == "text") {
             var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "text" value="${newdata[i].subheading[j].input[k].value}" /><button class="btn-close spanbtn"></button></label></span><br>`;
             $(div).append(span);
-            $(div).on("click", ".spanbtn", function () {
-              var spanIndex = $(this).parent().index();
-              // console.log(spanIndex, "aaaaaaaaaaaaaaaaaaaaaa");
-              var divIndex = $(this).closest("div").index() - 1;
-              // console.log(divIndex, "ssssssssssssssssssssss");
-              var sectionIndex = $(this).closest("section").index();
-              // console.log(sectionIndex, "ddddddddddddddddddddddddddddddd");
-              newdata[sectionIndex].subheading[divIndex].input.splice(spanIndex, 1);
-              localStorage.setItem("key", JSON.stringify(newdata));
-              $(this).parent().remove();
-            });
           }
           else if (newdata[i].subheading[j].input[k].inputvalue == "button") {
-            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close"></button></label></span><br>`;
+            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close spanbtn"></button></label></span><br>`;
+            $(div).append(span);
           }
           else if (newdata[i].subheading[j].input[k].inputvalue == "email") {
-            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close"></button></label></span><br>`;
+            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close spanbtn"></button></label></span><br>`;
+            $(div).append(span);
           }
           else if (newdata[i].subheading[j].input[k].inputvalue == "file") {
-            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close"></button></label></span><br>`;
+            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close spanbtn"></button></label></span><br>`;
+            $(div).append(span);
           }
           else if (newdata[i].subheading[j].input[k].inputvalue == "number") {
-            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close"></button></label></span><br>`;
+            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close spanbtn"></button></label></span><br>`;
+            $(div).append(span);
           }
           else if (newdata[i].subheading[j].input[k].inputvalue == "textarea") {
-            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close"></button></label></span><br>`;
+            var span = `<span><label> ${newdata[i].subheading[j].input[k].label} <input type= "button" value="${newdata[i].subheading[j].input[k].name}" /><button class="btn-close spanbtn"></button></label></span><br>`;
+            $(div).append(span);
           }
           else if (newdata[i].subheading[j].input[k].inputvalue == "radio") {
             var form = '';
             for (x = 0; x < newdata[i].subheading[j].input[k].options.length; x++) {
               form += `<input type='radio' name="dynamicRadio" value="${newdata[i].subheading[j].input[k].options[x]}"> ${newdata[i].subheading[j].input[k].options[x]}`
             };
-            var span = `<span><label> ${newdata[i].subheading[j].input[k].value} <option> ${form} </option><button class="btn-close"></button></label></span><br>`;
+            var span = `<span><label> ${newdata[i].subheading[j].input[k].value} <option> ${form} </option><button class="btn-close spanbtn"></button></label></span><br>`;
+            $(div).append(span);
           }
           else if (newdata[i].subheading[j].input[k].inputvalue == "checkbox") {
             var form = '';
             for (y = 0; y < newdata[i].subheading[j].input[k].options.length; y++) {
               form += `<input type="checkbox" value="${newdata[i].subheading[j].input[k].options[y]}"> ${newdata[i].subheading[j].input[k].options[y]}`
             };
-            var span = `<span><label> ${newdata[i].subheading[j].input[k].value} <option> ${form} </option><button class="btn-close"></button></label></span><br>`;
+            var span = `<span><label> ${newdata[i].subheading[j].input[k].value} <option> ${form} </option><button class="btn-close spanbtn"></button></label></span><br>`;
+            $(div).append(span);
           }
           else if (newdata[i].subheading[j].input[k].inputvalue == "select") {
             var form = '';
             for (z = 0; z < newdata[i].subheading[j].input[k].options.length; z++) {
               form += `<option> ${newdata[i].subheading[j].input[k].options[z]} </option>`
             };
-            var span = `<span><label> ${newdata[i].subheading[j].input[k].value} <option> ${form} </option><button class="btn-close"></button></label></span><br>`;
+            var span = `<span><label> ${newdata[i].subheading[j].input[k].value} <option> ${form} </option><button class="btn-close spanbtn"></button></label></span><br>`;
+            $(div).append(span);
           }
-
+          
+          $(div).on("click", ".spanbtn", function () {
+            var spanIndex = $(this).parent().index();
+            var divIndex = $(this).closest("div").index() - 1;
+            var sectionIndex = $(this).closest("section").index();
+            newdata[sectionIndex].subheading[divIndex].input.splice(spanIndex, 1);
+            localStorage.setItem("key", JSON.stringify(newdata));
+            $(this).parent().remove();
+          });
           $(div).sortable({
             items: "span",
             handle: "label",
@@ -134,13 +133,11 @@ $(document).ready(function () {
 
 
 
-
-
-
   $('.form1').submit(function (e) {
     e.preventDefault();
     var Heading = $(".i1").val();
-    $("main").append('<section><h1>' + Heading + '<button class="btn-close"></button></h1></section>');
+    $("main").append('<section><h1>' + Heading + '<button class="btn-close sectionbtn"></button></h1></section>');
+    
     $("main").sortable({
       items: "section",
       handle: "h1",
@@ -148,7 +145,7 @@ $(document).ready(function () {
     });
 
     $(".form1").trigger("reset")
-    $("section").on("click", ".btn-close", function () {
+    $("section").on("click", ".sectionbtn", function () {
       $(this).parent().parent().remove()
     });
 
@@ -167,6 +164,8 @@ $(document).ready(function () {
     array.push({ "heading": Heading, "subheading": [] });
     localStorage.setItem("key", JSON.stringify(array));
 
+    $('#1').modal('hide');
+
   });
 
   $('.form2').submit(function (e) {
@@ -174,7 +173,7 @@ $(document).ready(function () {
     var Heading = $(".i2 option:selected").val();
     // console.log(Heading,'222222222222222222222222');
     var Subheading = $(".i3").val();
-    $(`main section:nth-child(${Heading})`).append(`<div><h3> ${Subheading} <button class="btn-close"></button></h3></div>`);
+    $(`main section:nth-child(${Heading})`).append(`<div><h3> ${Subheading} <button class="btn-close divbtn"></button></h3></div>`);
     $("section").sortable({
       items: "div",
       handle: "h3",
@@ -182,7 +181,7 @@ $(document).ready(function () {
     });
 
     $(".form2").trigger("reset")
-    $("div").on("click", ".btn-close", function () {
+    $("div").on("click", ".divbtn", function () {
       $(this).parent().parent().remove()
     });
 
@@ -200,71 +199,79 @@ $(document).ready(function () {
     array[Heading - 1].subheading.push({ "subheading": Subheading, "input": [] });
     localStorage.setItem("key", JSON.stringify(array));
 
+    $('#2').modal('hide');
+
   });
+
   $(".form3").submit(function (e) {
     e.preventDefault();
     var Heading = $(".i4 option:selected").val();
     var Subheading = $(".i5 option:selected").val();
     var sub = parseInt(Subheading) + 1;
     var ipt = $(".i6").val();
-    var v1 = $(".i7").val();
-    var v2 = $(".i8").val();
-    var v3 = $(".i9").val();
-    var v4 = $(".i10").val();
-    var v5 = $(".i11").val().split(",");
+    var label = $(".i7").val();
+    var value = $(".i8").val();
+    var name = $(".i9").val();
+    var placeholder = $(".i10").val();
+    var options = $(".i11").val().split(",");
 
-    array[Heading - 1].subheading[Subheading - 1].input.push({ "inputvalue": ipt, "label": v1, "value": v2, "name": v3, "placeholder": v4, "options": v5 });
+    array[Heading - 1].subheading[Subheading - 1].input.push({ "inputvalue": ipt, "label": label, "value": value, "name": name, "placeholder": placeholder, "options": options });
     localStorage.setItem("key", JSON.stringify(array));
 
 
     if (ipt == "text") {
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + v1 + `<input type= ` + ipt + ` value="` + v2 + `" /><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + label + `<input type= ` + ipt + ` value="` + value + `" /><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     else if (ipt == "button") {
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + v1 + `<button> ` + v3 + ` </button><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + label + `<button> ` + name + ` </button><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     else if (ipt == "email") {
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + v1 + `<input type= ` + ipt + ` value="` + v3 + `" /><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + label + `<input type= ` + ipt + ` value="` + name + `" /><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     else if (ipt == "file") {
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + v1 + `<input type= ` + ipt + ` value="` + v3 + `" /><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + label + `<input type= ` + ipt + ` value="` + name + `" /><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     else if (ipt == "number") {
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + v1 + `<input type= ` + ipt + ` value="` + v3 + `" /><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + label + `<input type= ` + ipt + ` value="` + name + `" /><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     else if (ipt == "textarea") {
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + v1 + `<input type= ` + ipt + ` value="` + v3 + `" /><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label>` + label + `<input type= ` + ipt + ` value="` + name  + `" /><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     else if (ipt === "radio") {
       var form = '';
-      for (i = 0; i < v5.length; i++) {
-        form += `<input type='radio' name="dynamicRadio" value="${v5[i]}"> ${v5[i]}`
+      for (i = 0; i < options.length; i++) {
+        form += `<input type='radio' name="dynamicRadio" value="${options[i]}"> ${options[i]}`
       };
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label> ${v2} <option> ${form} </option><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label> ${value} <option> ${form} </option><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     else if (ipt == "checkbox") {
       var form = '';
-      for (i = 0; i < v5.length; i++) {
-        form += `<input type="checkbox" value="${v5[i]}"> ${v5[i]}`
+      for (i = 0; i < options.length; i++) {
+        form += `<input type="checkbox" value="${options[i]}"> ${options[i]}`
       };
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label> ${v2} <option> ${form} </option><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label> ${value} <option> ${form} </option><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     else if (ipt == "select") {
       var form = '';
-      for (i = 0; i < v5.length; i++) {
-        form += `<option> ${v5[i]} </option>`
+      for (i = 0; i < options.length; i++) {
+        form += `<option> ${options[i]} </option>`
       };
-      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label> ${v2} <select> ${form} </select><button class="btn-close"></button></label></span><br>`);
+      $(`main section:nth-child(${Heading}) div:nth-child(${sub})`).append(`<span><label> ${value} <select> ${form} </select><button class="btn-close spanbtn"></button></label></span><br>`);
     }
     $("div").sortable({
       items: "span",
       handle: "label",
       connectWith: "div",
     });
-    $("span").on("click", ".btn-close", function () {
+    $("span").on("click", ".spanbtn", function () {
       $(this).parent().remove()
     })
+
+    $('#3').modal('hide');
+
   });
+
 });
+
 
 
